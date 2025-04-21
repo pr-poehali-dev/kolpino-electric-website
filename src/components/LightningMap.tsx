@@ -35,7 +35,7 @@ const LightningMap = () => {
         const lightningIcon = `
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 2L4.094 12.5H11L10 22L18.906 11.5H12L13 2Z" 
-                  fill="#FFD600" stroke="#3361FF" stroke-width="1.5" 
+                  fill="#FFFC00" stroke="#4F6BFF" stroke-width="1.5" 
                   class="lightning-marker" />
           </svg>
         `;
@@ -49,23 +49,26 @@ const LightningMap = () => {
           {
             iconLayout: 'default#imageWithContent',
             iconImageHref: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(lightningIcon),
-            iconImageSize: [40, 40],
-            iconImageOffset: [-20, -20],
+            iconImageSize: [50, 50], // Сделаем маркер крупнее
+            iconImageOffset: [-25, -25],
             iconContentOffset: [0, 0]
           }
         );
 
         map.geoObjects.add(lightningMarker);
         
-        // Добавляем пульсирующую анимацию для метки
+        // Добавляем интенсивную пульсирующую анимацию для метки
         const pulse = () => {
           const marker = mapRef.current?.querySelector('.lightning-marker');
           if (marker) {
-            marker.classList.add('animate-lightning-pulse');
+            marker.classList.add('animate-neon-pulse');
           }
         };
         
         pulse();
+        
+        // Добавляем темную тему для карты
+        map.panes.get('ground').getElement().style.filter = 'invert(90%) hue-rotate(180deg) brightness(0.8)';
       });
     }
   };

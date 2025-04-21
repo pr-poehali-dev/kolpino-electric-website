@@ -1,134 +1,118 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 @layer base {
   :root {
-    --background: 210 50% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 222 82% 56%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 220 79% 65%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 84% 5%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 240 6% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 5% 96%;
-    --sidebar-accent-foreground: 240 6% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
-  }
-
-  .dark {
-    --background: 222 47% 11%;
+    --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 11%;
+    --card: 222.2 84% 6.9%;
     --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 11%;
+ 
+    --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-
-    --secondary: 217 33% 18%;
+ 
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 217 33% 18%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
+ 
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 213 27% 84%;
-    
-    --sidebar-background: 240 6% 10%;
-    --sidebar-foreground: 240 5% 96%;
-    --sidebar-primary: 224 76% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 4% 16%;
-    --sidebar-accent-foreground: 240 5% 96%;
-    --sidebar-border: 240 4% 16%;
-    --sidebar-ring: 217 91% 60%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
+    --radius: 0.5rem;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-dark-deeper text-white relative overflow-x-hidden;
+    background-image: radial-gradient(circle at 50% 0%, #1F1F1F 0%, #121212 50%, #0A0A0A 100%);
   }
 }
 
-.lightning-marker {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
+/* Неоновые эффекты */
+@layer components {
+  .neon-text-blue {
+    @apply text-electric relative;
+    text-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF, 0 0 15px #4F6BFF, 0 0 20px #4F6BFF;
   }
-  50% {
-    transform: scale(1.3);
-    opacity: 0.7;
+  
+  .neon-text-yellow {
+    @apply text-electric-yellow relative;
+    text-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00, 0 0 15px #FFFC00, 0 0 20px #FFFC00;
   }
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+  
+  .neon-text-pink {
+    @apply text-electric-pink relative;
+    text-shadow: 0 0 5px #FF00E4, 0 0 10px #FF00E4, 0 0 15px #FF00E4, 0 0 20px #FF00E4;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .neon-box {
+    @apply relative rounded-md overflow-hidden;
+    box-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF;
   }
-}
+  
+  .neon-box-yellow {
+    @apply relative rounded-md overflow-hidden;
+    box-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00;
+  }
+  
+  .neon-border {
+    @apply relative;
+    border: 1px solid #4F6BFF;
+    box-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF;
+  }
+  
+  .neon-border-yellow {
+    @apply relative;
+    border: 1px solid #FFFC00;
+    box-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00;
+  }
 
-.stagger-item {
-  opacity: 0;
-  transform: translateY(20px);
-}
+  .neon-grid {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(79, 107, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(79, 107, 255, 0.1) 1px, transparent 1px);
+  }
 
-.stagger-item.active {
-  animation: fadeIn 0.5s ease-in forwards;
+  .neon-button {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 
+           relative overflow-hidden border border-electric;
+    background-color: transparent;
+    color: #4F6BFF;
+    text-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF;
+    box-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF, inset 0 0 5px #4F6BFF;
+  }
+  
+  .neon-button:hover {
+    background-color: rgba(79, 107, 255, 0.2);
+    box-shadow: 0 0 10px #4F6BFF, 0 0 20px #4F6BFF, inset 0 0 10px #4F6BFF;
+  }
+  
+  .neon-button-yellow {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 
+           relative overflow-hidden border border-electric-yellow;
+    background-color: transparent;
+    color: #FFFC00;
+    text-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00;
+    box-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00, inset 0 0 5px #FFFC00;
+  }
+  
+  .neon-button-yellow:hover {
+    background-color: rgba(255, 252, 0, 0.2);
+    box-shadow: 0 0 10px #FFFC00, 0 0 20px #FFFC00, inset 0 0 10px #FFFC00;
+  }
 }
