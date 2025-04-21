@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { YouTube } from "lucide-react";
+import { YoutubeIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
               asChild
             >
               <a href="https://youtube.com/@elektrikkolpino" target="_blank" rel="noopener noreferrer">
-                <YouTube className="w-5 h-5 mr-1" />
+                <YoutubeIcon className="w-5 h-5 mr-1" />
                 <span>YouTube</span>
               </a>
             </Button>
