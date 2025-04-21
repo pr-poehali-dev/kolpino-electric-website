@@ -31,12 +31,13 @@ const LightningMap = () => {
           controls: ['zoomControl', 'geolocationControl']
         });
 
-        // Создаем кастомную метку с изображением молнии
+        // Создаем кастомную метку с изображением молнии в граффити стиле
         const lightningIcon = `
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 2L4.094 12.5H11L10 22L18.906 11.5H12L13 2Z" 
-                  fill="#FFFC00" stroke="#4F6BFF" stroke-width="1.5" 
-                  class="lightning-marker" />
+                  fill="#FFD600" stroke="#FF5722" stroke-width="2" 
+                  class="lightning-dot" />
+            <circle cx="12" cy="12" r="10" stroke="#FF5722" stroke-width="1" stroke-dasharray="3 2" fill="none" />
           </svg>
         `;
 
@@ -44,39 +45,46 @@ const LightningMap = () => {
           kolpinoCoords,
           {
             hintContent: 'Электрик Колпино',
-            balloonContent: 'Вызов электрика на дом в Колпино<br>+7 950 030 88 30'
+            balloonContent: '<div style="font-family: \'Permanent Marker\', cursive; color: #FF5722;">Вызов электрика на дом в Колпино<br>+7 950 030 88 30</div>'
           },
           {
             iconLayout: 'default#imageWithContent',
             iconImageHref: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(lightningIcon),
-            iconImageSize: [50, 50], // Сделаем маркер крупнее
-            iconImageOffset: [-25, -25],
+            iconImageSize: [60, 60],
+            iconImageOffset: [-30, -30],
             iconContentOffset: [0, 0]
           }
         );
 
         map.geoObjects.add(lightningMarker);
         
-        // Добавляем интенсивную пульсирующую анимацию для метки
-        const pulse = () => {
-          const marker = mapRef.current?.querySelector('.lightning-marker');
-          if (marker) {
-            marker.classList.add('animate-neon-pulse');
+        // Добавляем стилизацию для карты в граффити-стиле
+        map.panes.get('ground').getElement().style.filter = 'grayscale(80%) contrast(120%) brightness(0.8)';
+        
+        // Добавляем подсветку рядом с маркером
+        const circle = new window.ymaps.Circle(
+          [kolpinoCoords, 500],
+          {
+            hintContent: 'Зона обслуживания'
+          },
+          {
+            fillColor: "#FF572220",
+            strokeColor: "#FF5722",
+            strokeWidth: 2,
+            strokeStyle: 'dash'
           }
-        };
+        );
         
-        pulse();
-        
-        // Добавляем темную тему для карты
-        map.panes.get('ground').getElement().style.filter = 'invert(90%) hue-rotate(180deg) brightness(0.8)';
+        map.geoObjects.add(circle);
       });
     }
   };
 
   return (
-    <Card className="w-full h-[300px] sm:h-[400px] overflow-hidden shadow-lg rounded-xl">
-      <div ref={mapRef} className="w-full h-full" />
-    </Card>
+    <div className="rounded-lg overflow-hidden relative">
+      <div className="absolute inset-0 bg-graffiti/10 mix-blend-overlay z-10 pointer-events-none"></div>
+      <div className="w-full h-[300px] sm:h-[400px] overflow-hidden" ref={mapRef}></div>
+    </div>
   );
 };
 

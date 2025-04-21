@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&display=swap');
  
 @layer base {
   :root {
@@ -37,82 +38,217 @@
   }
 
   body {
-    @apply bg-dark-deeper text-white relative overflow-x-hidden;
-    background-image: radial-gradient(circle at 50% 0%, #1F1F1F 0%, #121212 50%, #0A0A0A 100%);
+    @apply bg-[#121212] text-white relative overflow-x-hidden;
+    background-image: linear-gradient(to bottom, #121212, #1a1a1a);
+    font-family: 'Righteous', sans-serif;
   }
 }
 
-/* Неоновые эффекты */
+/* Граффити эффекты */
 @layer components {
-  .neon-text-blue {
-    @apply text-electric relative;
-    text-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF, 0 0 15px #4F6BFF, 0 0 20px #4F6BFF;
+  .graffiti-text {
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 1px;
+    transform: skew(-5deg, 0);
   }
   
-  .neon-text-yellow {
-    @apply text-electric-yellow relative;
-    text-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00, 0 0 15px #FFFC00, 0 0 20px #FFFC00;
+  .graffiti-title {
+    font-family: 'Permanent Marker', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform: skew(-5deg, 0);
+    -webkit-text-stroke: 1px #FF5722;
+    text-shadow: 3px 3px 0 #222, 
+                 5px 5px 0 rgba(0, 0, 0, 0.2);
   }
   
-  .neon-text-pink {
-    @apply text-electric-pink relative;
-    text-shadow: 0 0 5px #FF00E4, 0 0 10px #FF00E4, 0 0 15px #FF00E4, 0 0 20px #FF00E4;
+  .spray-outline {
+    filter: drop-shadow(0 0 2px #FF5722);
   }
   
-  .neon-box {
-    @apply relative rounded-md overflow-hidden;
-    box-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF;
+  .graffiti-outline {
+    -webkit-text-stroke: 1px #FF5722;
+    text-shadow: 2px 2px 0 #222;
   }
   
-  .neon-box-yellow {
-    @apply relative rounded-md overflow-hidden;
-    box-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00;
+  .graffiti-box {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #222;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
   }
   
-  .neon-border {
-    @apply relative;
-    border: 1px solid #4F6BFF;
-    box-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF;
+  .graffiti-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FF5722' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    pointer-events: none;
   }
   
-  .neon-border-yellow {
-    @apply relative;
-    border: 1px solid #FFFC00;
-    box-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00;
+  .graffiti-button {
+    @apply px-6 py-3 rounded-lg font-bold transition-all duration-300 
+           relative overflow-hidden border-2;
+    background-color: transparent;
+    text-transform: uppercase;
+    transform: skew(-5deg, 0);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .graffiti-button-orange {
+    @apply border-orange-500 text-orange-500;
+    background-color: rgba(249, 115, 22, 0.1);
+  }
+  
+  .graffiti-button-orange:hover {
+    @apply bg-orange-500 text-white;
+    transform: skew(-5deg, 0) translateY(-2px);
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .graffiti-button-blue {
+    @apply border-blue-500 text-blue-500;
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  .graffiti-button-blue:hover {
+    @apply bg-blue-500 text-white;
+    transform: skew(-5deg, 0) translateY(-2px);
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .drip-border {
+    position: relative;
+  }
+  
+  .drip-border::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-image: linear-gradient(90deg, transparent, #FF5722 30%, #FF5722 70%, transparent);
+    background-size: 20px 100%;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.3));
+  }
+  
+  .drip-border-blue::after {
+    background-image: linear-gradient(90deg, transparent, #3B82F6 30%, #3B82F6 70%, transparent);
+  }
+  
+  .spray-effect {
+    position: relative;
+  }
+  
+  .spray-effect::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 60px;
+    height: 60px;
+    background-image: radial-gradient(circle at center, rgba(255, 87, 34, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: scale(2);
+    z-index: -1;
   }
 
-  .neon-grid {
-    background-size: 50px 50px;
-    background-image: 
-      linear-gradient(to right, rgba(79, 107, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(79, 107, 255, 0.1) 1px, transparent 1px);
+  .brick-pattern {
+    background-image: linear-gradient(335deg, #222 23px, transparent 23px),
+                      linear-gradient(155deg, #222 23px, transparent 23px),
+                      linear-gradient(335deg, #222 23px, transparent 23px),
+                      linear-gradient(155deg, #222 23px, transparent 23px);
+    background-size: 58px 58px;
+    background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+    background-color: #1a1a1a;
+    opacity: 0.2;
+  }
+  
+  @keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      opacity: 0.8;
+    }
+  }
+  
+  .flicker-animation {
+    animation: flicker 3s linear infinite;
   }
 
-  .neon-button {
-    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 
-           relative overflow-hidden border border-electric;
-    background-color: transparent;
-    color: #4F6BFF;
-    text-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF;
-    box-shadow: 0 0 5px #4F6BFF, 0 0 10px #4F6BFF, inset 0 0 5px #4F6BFF;
+  .lightning-dot {
+    animation: pulse 2s infinite;
+    filter: drop-shadow(0 0 10px #FFD600);
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
   
-  .neon-button:hover {
-    background-color: rgba(79, 107, 255, 0.2);
-    box-shadow: 0 0 10px #4F6BFF, 0 0 20px #4F6BFF, inset 0 0 10px #4F6BFF;
+  @keyframes spray {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   
-  .neon-button-yellow {
-    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 
-           relative overflow-hidden border border-electric-yellow;
-    background-color: transparent;
-    color: #FFFC00;
-    text-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00;
-    box-shadow: 0 0 5px #FFFC00, 0 0 10px #FFFC00, inset 0 0 5px #FFFC00;
+  .graffiti-appear {
+    animation: spray 0.5s ease forwards;
   }
   
-  .neon-button-yellow:hover {
-    background-color: rgba(255, 252, 0, 0.2);
-    box-shadow: 0 0 10px #FFFC00, 0 0 20px #FFFC00, inset 0 0 10px #FFFC00;
+  .graffiti-stagger > * {
+    opacity: 0;
+  }
+  
+  .graffiti-stagger > *:nth-child(1) {
+    animation: spray 0.5s ease forwards 0.1s;
+  }
+  
+  .graffiti-stagger > *:nth-child(2) {
+    animation: spray 0.5s ease forwards 0.2s;
+  }
+  
+  .graffiti-stagger > *:nth-child(3) {
+    animation: spray 0.5s ease forwards 0.3s;
+  }
+  
+  .graffiti-stagger > *:nth-child(4) {
+    animation: spray 0.5s ease forwards 0.4s;
+  }
+  
+  .graffiti-stagger > *:nth-child(5) {
+    animation: spray 0.5s ease forwards 0.5s;
+  }
+  
+  .graffiti-stagger > *:nth-child(6) {
+    animation: spray 0.5s ease forwards 0.6s;
   }
 }
